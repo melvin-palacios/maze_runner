@@ -1,11 +1,11 @@
-public class Maze {
+public class MazeRunner {
     public static void main(String[] args) {
         if (args == null){
-            System.out.println("Error: No arguments \n Here is the syntax : \n Maze <width> <height> <perfect|imperfect> <simple|graph|optimized>");
+            System.out.println("Error: No arguments \n Here is the syntax : \n MazeRunner <width> <height> <perfect|imperfect> <simple|graph|optimized>");
             return;
         }
         if (args.length != 4){
-            System.out.println("Error: Invalid number of arguments \n Here is the syntax : \n Maze <width> <height> <perfect|imperfect> <simple|graph|optimized>");
+            System.out.println("Error: Invalid number of arguments \n Here is the syntax : \n MazeRunner <width> <height> <perfect|imperfect> <simple|graph|optimized>");
             return;
         }
         try {
@@ -22,15 +22,16 @@ public class Maze {
 
         switch (args[2]){
             case "perfect":
+                PerfectMazeGenerator perfect_generator = new PerfectMazeGenerator(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
                 switch (args[3]){
                     case "simple":
-                        System.out.println("Maze 1");
+                        perfect_generator.generateSimpleMaze();
                         break;
                     case "graph":
-                        System.out.println("Maze 2");
+                        perfect_generator.generateGraphMaze();
                         break;
                     case "optimized":
-                        System.out.println("Maze 3");
+                        perfect_generator.generateOptimizedMaze();
                         break;
                     default:
                         System.out.println("Error: Invalid argument for perfect maze");
@@ -38,15 +39,16 @@ public class Maze {
                 }
                 break;
             case "imperfect":
+                ImperfectMazeGenerator imperfect_generator = new ImperfectMazeGenerator(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
                 switch (args[3]){
                     case "simple":
-                        System.out.println("Maze 4");
+                        imperfect_generator.generateSimpleMaze();
                         break;
                     case "graph":
-                        System.out.println("Maze 5");
+                        imperfect_generator.generateGraphMaze();
                         break;
                     case "optimized":
-                        System.out.println("Maze 6");
+                        imperfect_generator.generateOptimizedMaze();
                         break;
                     default:
                         System.out.println("Error: Invalid argument for imperfect maze");
